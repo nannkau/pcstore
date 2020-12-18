@@ -1,6 +1,7 @@
 package edu.sgu.store.dto;
 
 import edu.sgu.store.entity.Combo;
+import edu.sgu.store.entity.ComboProduct;
 import edu.sgu.store.entity.Customer;
 import edu.sgu.store.entity.Product;
 public class CartDTO {
@@ -10,6 +11,7 @@ public class CartDTO {
     private Integer amount;
     private Customer customer;
     private Combo combo;
+    private long price;
 
     public Integer getId() {
         return id;
@@ -17,6 +19,25 @@ public class CartDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice() {
+        long priceTmp=0;
+        if (this.combo!=null){
+            for (ComboProduct comboProduct: this.combo.getComboProducts())
+            {
+               priceTmp=priceTmp+(comboProduct.getProduct().getPrice()* comboProduct.getAmount());
+            }
+            this.price=priceTmp;
+        }
+        else {
+            this.price=0;
+        }
+
     }
 
     public Boolean getSelected() {

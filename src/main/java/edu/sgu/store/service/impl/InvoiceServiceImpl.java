@@ -38,7 +38,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                else {
                    long price=0;
                    for (ComboProduct comboProduct : cart.getCombo().getComboProducts()){
-                       price=price+comboProduct.getProduct().getPrice();
+                       price=price+(comboProduct.getProduct().getPrice()* comboProduct.getAmount());
                    }
                    invoiceDetail.setPrice(price);
                }

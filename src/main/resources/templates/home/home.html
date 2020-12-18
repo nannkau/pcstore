@@ -22,7 +22,7 @@
                                 <h5 th:text="${item.price}">$24.99</h5>
                             </div>
                             <div class="card-footer">
-                                <a href="#" th:href="@{'cart/add.html?flag=0&id='+${item.id}}"><button type="button" class="btn btn-custon-rounded-two btn-success"></span>Buy</button></a>
+                                <a href="#" th:href="@{'/cart/add.html?flag=0&id='+${item.id}}"><button type="button" class="btn btn-custon-rounded-two btn-success"></span>Buy</button></a>
 
                             </div>
 
