@@ -32,14 +32,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group-inner">
+                                <div class="form-group data-custon-pick" id="data_1">
                                     <div class="col-lg-3">
                                         <label>Finish Date</label>
                                     </div>
                                     <div class="col-lg-5">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control" th:field="*{shipDate}">
+                                            <input type="text" class="form-control" th:field="*{shipDate}" id="datePicker">
                                         </div>
                                     </div>
                                 </div>
@@ -117,6 +117,14 @@
         $("[type='number']").keypress(function (evt) {
             evt.preventDefault();
         });
+        var now = new Date();
+        now.setDate(now.getDate() + 1)
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+        var today = (month)+"/"+(day)+"/"+ now.getFullYear();
+
+        $('#datePicker').val(today);
     });
 
 </script>

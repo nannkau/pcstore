@@ -1,10 +1,13 @@
 package edu.sgu.store.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
 public class InvoiceDTO {
     private String address;
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date shipDate;
     private List<CartDTO> itemList;
 
