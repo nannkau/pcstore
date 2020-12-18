@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/flagments/header::header">
+        <title>Home</title>
+    </th:block>
+</head>
+<body class="materialdesign">
+<div class="login-form-area mg-t-30 mg-b-15">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <form id="adminpro-register-form" class="adminpro-form" action="#" th:action="@{/register.html}" th:object="${customerDTO}" method="post" >
+            <div class="col-lg-6">
+                <div class="login-bg">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="login-title">
+                                <h1>Registration</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="login-input-head">
+                                <p>Full Name</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="login-input-area register-mg-rt">
+                                        <input type="text" name="text" th:field="*{firstName}"/>
+                                        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="login-input-area">
+                                        <input type="text" name="text" th:field="*{lastName}"/>
+                                        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="login-input-head">
+                                <p>Username</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="login-input-area">
+                                <input type="text" name="username" th:field="*{username}" />
+                                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                                <i class="fa fa-user login-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="login-input-head">
+                                <p>Password</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="login-input-area">
+                                <input type="password" name="password" th:field="*{passwork}"/>
+                                <span th:if="${#fields.hasErrors('passwork')}" th:errors="*{passwork}"></span>
+                                <i class="fa fa-lock login-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="login-input-head">
+                                <p>Confarm Password</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="login-input-area">
+                                <input type="password"  />
+                                <i class="fa fa-lock login-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="login-input-head">
+                                <p>Gender</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="login-input-area">
+                                <div class="form-select-list">
+                                    <select class="form-control custom-select-value" name="account" th:field="*{gender}">
+                                        <option value="0">FeMale</option>
+                                        <option value="1">Male</option>
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="login-input-head">
+                                <p>Address</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="login-input-area">
+                                <input type="text" name="username" th:field="*{address}" />
+                                <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="login-input-head">
+                                <p>Birth Date</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group data-custon-pick" id="data_1">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" th:field="*{birthDate}" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-8">
+                            <div class="login-button-pro">
+                                <button type="submit" class="login-button login-button-rg">Log In</button>
+                                <button type="submit" class="login-button login-button-lg">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+</div>
+
+<th:block th:replace="/flagments/footer::footer"></th:block>
+</body>
+</html>

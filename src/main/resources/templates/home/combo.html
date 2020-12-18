@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/flagments/header::header">
+        <title>Combo</title>
+    </th:block>
+</head>
+<body class="materialdesign">
+<th:block th:replace="/flagments/sidebar::sidebar"></th:block>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 " style="margin-top: 40px;">
+            <div class="row">
+                <div class="col-lg-2 col-md-3 mb-2" th:each="   item : ${combos}">
+                    <div class="card h-100">
+                        <a href="#" th:href="@{'/detail/'+${item.id}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#" th:text="${item.name}">Item One</a>
+                            </h4>
+                            <h5 th:text="${item.getInvoiceDetails()}">$24.99</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" th:href="@{'cart/add.html?flag=1&id='+${item.id}}"><button type="button" class="btn btn-custon-rounded-two btn-success"></span>Buy</button></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<th:block th:replace="/flagments/footer::footer"></th:block>
+</body>
+</html>

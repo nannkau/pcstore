@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/flagments/header::header">
+        <title>Card</title>
+    </th:block>
+</head>
+<body class="materialdesign">
+<th:block th:replace="/flagments/sidebar::sidebar"></th:block>
+<div class="admin-dashone-data-table-area">
+    <div class="data-table-area mg-b-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sparkline13-list shadow-reset">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Order<span class="table-project-n"></span> Table</h1>
+                            </div>
+                        </div>
+                        <form action="#" th:action="@{/cart/index.html}" th:object="${invoiceDTO}" method="post">
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <label class="login2 pull-right pull-right-pro">Address</label>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="input-mark-inner mg-b-22">
+                                            <input type="text" id="address" th:field="*{address}" class="form-control" name="address" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group-inner">
+                                    <div class="col-lg-3">
+                                        <label>Finish Date</label>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="input-group date">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input type="text" class="form-control" th:field="*{shipDate}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-inner">
+                                <div class="sparkline13-graph">
+                                    <div class="datatable-dashv1-list custom-datatable-overright">
+                                        <div id="toolbar">
+                                            <select class="form-control">
+                                                <option value="">Export Basic</option>
+                                                <option value="all">Export All</option>
+                                                <option value="selected">Export Selected</option>
+                                            </select>
+                                        </div>
+                                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                            <thead>
+                                            <tr>
+                                                <th data-field="checked">Click</th>
+                                                <th data-field="name" >Name</th>
+                                                <th data-field="price" >Price</th>
+                                                <th data-field="amountTotal" >Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody >
+                                            <tr th:each=" cart,count :${cartDTOs}">
+
+                                                <td>  <input type="checkbox"
+                                                             th:field="*{itemList[__${count.index}__].selected}">
+                                                    <input type="hidden"
+                                                           th:field="*{itemList[__${count.index}__].id}">
+
+                                                </td>
+                                                <td th:text="${cart.getProduct().getName()}">Name</td>
+                                                <td th:text="${cart.getProduct().getPrice()}">Code</td>
+                                                <td> <input type="number" min="1" th:max="${cart.getProduct().getDiscountPercent()}" id="amountTotal" th:field="*{itemList[__${count.index}__].amount}" class="form-control" name="email" /></td>
+                                                <td>
+                                                    <div class="btn-group project-list-action">
+                                                        <a th:href="@{'/cart/remove/'+${cart.getId()} }"> <i class="fas fa-trash"></i> remove</a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="form-group-inner">
+                                            <div class="login-btn-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3"></div>
+                                                    <div class="col-lg-9">
+                                                        <div class="login-horizental cancel-wp pull-left">
+                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Buy</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div class="login-horizental cancel-wp pull-left">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $( document ).ready(function() {
+        $("[type='number']").keypress(function (evt) {
+            evt.preventDefault();
+        });
+    });
+
+</script>
+<th:block th:replace="/flagments/footer::footer"></th:block>
+</body>
+</html>
