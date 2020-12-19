@@ -23,7 +23,7 @@ public class ComboServiceImpl implements ComboService {
         for (Combo combo : comboRepository.findAll()){
             for (ComboProduct comboProduct: combo.getComboProducts())
             {
-                price=price+(comboProduct.getProduct().getPrice()* comboProduct.getAmount());
+                price=price+(comboProduct.getProduct().getPrice()-(comboProduct.getProduct().getPrice()*comboProduct.getProduct().getDiscountPercent()/100))* comboProduct.getAmount();
             }
             ComboDTO comboDTO= new ComboDTO();
             comboDTO.setName(combo.getName());

@@ -38,7 +38,7 @@ public class CartController {
         for (CartDTO cartDTO: invoiceDTO.getItemList()){
                 if (cartDTO.getSelected()==true) dem++;
             }
-            if (dem>0){
+            if (dem>0 || invoiceDTO.getItemList()==null ||invoiceDTO.getItemList().size() == 0){
                 invoiceService.save(invoiceDTO,authentication.getName());
                 return "redirect:/";
             }

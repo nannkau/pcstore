@@ -30,7 +30,7 @@ public class CartDTO {
         if (this.combo!=null){
             for (ComboProduct comboProduct: this.combo.getComboProducts())
             {
-               priceTmp=priceTmp+(comboProduct.getProduct().getPrice()* comboProduct.getAmount());
+                priceTmp=priceTmp+(comboProduct.getProduct().getPrice()-(comboProduct.getProduct().getPrice()*comboProduct.getProduct().getDiscountPercent()/100))* comboProduct.getAmount();
             }
             this.price=priceTmp;
         }

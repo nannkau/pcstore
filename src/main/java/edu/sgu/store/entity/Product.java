@@ -1,6 +1,5 @@
 package edu.sgu.store.entity;
 
-import jdk.internal.dynalink.linker.LinkerServices;
 
 import javax.persistence.*;
 import java.io.Serializable;

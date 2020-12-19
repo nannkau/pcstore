@@ -33,12 +33,12 @@ public class InvoiceServiceImpl implements InvoiceService {
                invoiceDetail.setAmount(entity.getAmount());
                invoiceDetail.setProduct(cart.getProduct());
                if(cart.getProduct()!=null){
-                   invoiceDetail.setPrice(cart.getProduct().getPrice());
+                   invoiceDetail.setPrice(cart.getProduct().getPrice()-(cart.getProduct().getPrice()*cart.getProduct().getDiscountPercent()/100));
                }
                else {
                    long price=0;
                    for (ComboProduct comboProduct : cart.getCombo().getComboProducts()){
-                       price=price+(comboProduct.getProduct().getPrice()* comboProduct.getAmount());
+                       price=price+(comboProduct.getProduct().getPrice()-(comboProduct.getProduct().getPrice()*comboProduct.getProduct().getDiscountPercent()/100))* comboProduct.getAmount();
                    }
                    invoiceDetail.setPrice(price);
                    invoiceDetail.setCombo(cart.getCombo());
