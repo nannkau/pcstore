@@ -41,6 +41,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                        price=price+(comboProduct.getProduct().getPrice()* comboProduct.getAmount());
                    }
                    invoiceDetail.setPrice(price);
+                   invoiceDetail.setCombo(cart.getCombo());
                }
                invoiceDetailList.add(invoiceDetail);
                cartRepository.deleteById(cart.getId());

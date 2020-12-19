@@ -34,9 +34,15 @@ public class CartController {
     }
     @RequestMapping(value = "/cart/index.html",method = RequestMethod.POST)
     public String buy(Model model, Authentication authentication, @Valid InvoiceDTO invoiceDTO){
-
-            invoiceService.save(invoiceDTO,authentication.getName());
-        return "redirect:/";
+        Integer dem=0;
+        for (CartDTO cartDTO: invoiceDTO.getItemList()){
+                if (cartDTO.getSelected()==true) dem++;
+            }
+            if (dem>0){
+                invoiceService.save(invoiceDTO,authentication.getName());
+                return "redirect:/";
+            }
+            else return "redirect:/cart/index.html";
 
     }
     @RequestMapping(value = "cart/add.html")
